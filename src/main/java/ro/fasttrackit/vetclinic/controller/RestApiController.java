@@ -1,11 +1,12 @@
 package ro.fasttrackit.vetclinic.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.fasttrackit.vetclinic.model.Pet;
+import ro.fasttrackit.vetclinic.model.entity.PetEntity;
 import ro.fasttrackit.vetclinic.service.PetService;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class RestApiController {
@@ -16,24 +17,26 @@ public class RestApiController {
         this.petService = injectedService;
     }
 
-    @GetMapping("/api/home")
-    public String homePage() {
-        return "This is the home page";
+    @GetMapping("/api/getPet/{id}")
+    public Optional<PetEntity> getPetById(@PathVariable Long id) {
+
+        return petService.getById(id);
     };
 
-    @GetMapping("/api/getPet")
-    public String getPet() {
-        return "return pet!";
-    };
+    @GetMapping("/api/getAllPets")
+    public List<PetEntity> getAllPets() {
 
-    @GetMapping("/api/getPets")
-    public String getPets() {
-        return "return pets";
+        return petService.getAll();
     };
 
     @PostMapping("/api/addPet")
     public Pet createPet(@RequestBody Pet requestBody) {
         return petService.createNewPet(requestBody);
+    }
+
+    @DeleteMapping("/api/{id}")
+    public void deletePet(@PathVariable Long id) {
+        petService.deleteById(id);
     }
 
 }

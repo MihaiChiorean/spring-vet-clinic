@@ -3,15 +3,16 @@ package ro.fasttrackit.vetclinic.model.entity;
 import ro.fasttrackit.vetclinic.model.Species;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "vetClinic")
-public class PetEntity {
+public class PetEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;
-    @Enumerated(EnumType.STRING)
+    @Enumerated
     private Species species;
 
     public Long getId() {
