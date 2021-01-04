@@ -21,6 +21,8 @@ dependencies {
 	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.4.2'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompile 'org.mockito:mockito-core:2.28.2'
+	testCompile 'org.mockito:mockito-junit-jupiter:2.28.2'
 }
 
 test {

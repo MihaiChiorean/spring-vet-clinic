@@ -17,16 +17,35 @@ public class PetService {
         this.repository = injectedRepository;
     }
 
-    public Pet createNewPet(Pet petRequest) {
-        PetEntity newPet = new PetEntity();
-        newPet.setName(petRequest.getName());
-        newPet.setSpecies(petRequest.getSpecies());
-        PetEntity savedEntity = this.repository.save(newPet);
+    public Pet createNewOrUpdatePet(Pet petRequest) {
+        if(petRequest.getId() == null) {
 
+            PetEntity newPet = new PetEntity();
+            newPet.setName(petRequest.getName());
+            newPet.setSpecies(petRequest.getSpecies());
+            PetEntity savedEntity = this.repository.save(newPet);
+
+            return convertPetEntityToPet(savedEntity);
+        }
+        Optional<PetEntity> foundPetById = repository.findById(petRequest.getId());
+        if(foundPetById.isPresent()) {
+            PetEntity updatedPet = new PetEntity();
+            updatedPet.setSpecies(petRequest.getSpecies());
+            updatedPet.setName(petRequest.getName());
+            updatedPet.setId(petRequest.getId());
+            repository.save(updatedPet);
+
+            PetEntity savedEntity = this.repository.save(updatedPet);
+            return convertPetEntityToPet(savedEntity);
+        }
+        return null;
+    }
+
+    public Pet convertPetEntityToPet (PetEntity petEntity) {
         Pet responseObject = new Pet();
-        responseObject.setId(savedEntity.getId());
-        responseObject.setName(savedEntity.getName());
-        responseObject.setSpecies(savedEntity.getSpecies());
+        responseObject.setId(petEntity.getId());
+        responseObject.setName(petEntity.getName());
+        responseObject.setSpecies(petEntity.getSpecies());
         return responseObject;
     }
 

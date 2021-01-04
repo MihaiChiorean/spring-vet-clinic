@@ -3,9 +3,9 @@ package ro.fasttrackit.vetclinic.model;
 import java.time.LocalDate;
 
 public class Pet {
-    public Long id;
-    public String name;
-    public Species species;
+    private Long id;
+    private String name;
+    private Species species;
 
     public Long getId() {
         return id;
