@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ro.fasttrackit.vetclinic.model.Pet;
+import ro.fasttrackit.vetclinic.model.PetDto;
 import ro.fasttrackit.vetclinic.model.Species;
 import ro.fasttrackit.vetclinic.model.entity.PetEntity;
 import ro.fasttrackit.vetclinic.repository.PetRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class PetServiceTest {
     @InjectMocks
@@ -21,7 +20,7 @@ class PetServiceTest {
 
     @Test
     public void createNewPet_expectedRepositorySaveMethodCalled() {
-        Pet petRequest = new Pet();
+        PetDto petRequest = new PetDto();
         this.service.createNewPet(petRequest);
         Mockito.when(this.repository.save(ArgumentMatchers.any(PetEntity.class))).thenReturn(new PetEntity());
 
@@ -38,7 +37,7 @@ class PetServiceTest {
         Mockito.when(repository.save(ArgumentMatchers.any())).thenReturn(expectedEntity);
 
         // When (action to test)
-        Pet actual = service.createNewPet(new Pet());
+        PetDto actual = service.createNewPet(new PetDto());
 
         // Then (assertions)
         Assertions.assertNotNull(actual);

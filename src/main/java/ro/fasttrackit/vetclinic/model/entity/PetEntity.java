@@ -5,14 +5,14 @@ import ro.fasttrackit.vetclinic.model.Species;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity(name = "vetClinic")
+@Entity(name = "pet")
 public class PetEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Species species;
 
     public Long getId() {

@@ -1,8 +1,6 @@
 package ro.fasttrackit.vetclinic.model;
 
-import java.time.LocalDate;
-
-public class Pet {
+public class PetDto {
     private Long id;
     private String name;
     private Species species;
