@@ -19,14 +19,12 @@ public class OwnerController {
     }
 
     @GetMapping("/{id}")
-    public OwnerDto getOwnerById(@PathVariable Long id) {
-
+    public OwnerDto getOwnerById(@PathVariable(name = "id") Long id) {
         return service.getById(id);
     };
 
     @GetMapping("/all")
     public ResponseEntity<List<OwnerDto>> getAllOwners() {
-
         return ResponseEntity.ok(service.getAll());
     };
 

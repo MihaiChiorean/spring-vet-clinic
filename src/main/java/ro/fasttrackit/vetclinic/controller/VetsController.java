@@ -9,7 +9,7 @@ import ro.fasttrackit.vetclinic.service.VetsService;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/vets")
+@RequestMapping("api/vet")
 public class VetsController {
 
     private final VetsService service;
@@ -19,9 +19,9 @@ public class VetsController {
     }
 
     @GetMapping("/{id}")
-    public VetsDto getVetById(@PathVariable Long id) {
+    public VetsDto getVetById(@PathVariable(name = "id") Long vetId) {
 
-        return service.getById(id);
+        return service.getById(vetId);
     };
 
     @GetMapping("/all")

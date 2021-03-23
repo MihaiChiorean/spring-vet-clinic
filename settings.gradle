@@ -1,1 +1,3 @@
 rootProject.name = 'spring-vet-clinic'
+
+include 'vet-notification'

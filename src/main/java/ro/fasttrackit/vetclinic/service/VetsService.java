@@ -7,6 +7,7 @@ import ro.fasttrackit.vetclinic.model.entity.VetsEntity;
 import ro.fasttrackit.vetclinic.repository.VetsRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,8 +58,12 @@ public class VetsService {
                 .collect(Collectors.toList());
     }
 
-    public VetsDto getById(Long VetsId) {
-        return this.repository.findById(VetsId)
+    public VetsDto getById(Long vetsId) {
+        Optional<VetsEntity> theEntity = this.repository.findById(vetsId);
+        if(!theEntity.isPresent()) {
+            return null;
+        }
+        return theEntity
                 .map(entity -> mapEntityToVetsResponse(entity))
                 .get();
     }

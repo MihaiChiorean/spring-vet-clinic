@@ -1,29 +1,17 @@
-package ro.fasttrackit.vetclinic.model.entity;
+package ro.fastrackit.vetnotification.model;
 
-import javax.persistence.*;
-
-@Entity(name = "diagnosis")
-public class DiagnosisEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column
+public class DiagnosisMessageReceiver {
+    private Long consultationId;
     private String title;
-    @Column
     private String description;
-    @Column
     private String recommendations;
 
-    @ManyToOne
-    private ConsultationEntity consultation;
-
-    public Long getId() {
-        return id;
+    public Long getConsultationId() {
+        return consultationId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setConsultationId(Long consultationId) {
+        this.consultationId = consultationId;
     }
 
     public String getTitle() {
@@ -50,22 +38,13 @@ public class DiagnosisEntity {
         this.recommendations = recommendations;
     }
 
-    public ConsultationEntity getConsultation() {
-        return consultation;
-    }
-
-    public void setConsultation(ConsultationEntity consultation) {
-        this.consultation = consultation;
-    }
-
     @Override
     public String toString() {
-        return "DiagnosisEntity{" +
-                "id=" + id +
+        return "DiagnosisMessageReceiver{" +
+                "consultationId=" + consultationId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", recommendations='" + recommendations + '\'' +
-                ", consultation=" + consultation +
                 '}';
     }
 }
