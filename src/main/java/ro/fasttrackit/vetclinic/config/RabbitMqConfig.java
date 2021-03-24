@@ -9,7 +9,7 @@ public class RabbitMqConfig {
 
     @Bean
     public DirectExchange directExchange() {
-        return new DirectExchange("directExchange");
+        return new DirectExchange("vet-rabbit");
     }
 
 }

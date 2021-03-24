@@ -37,4 +37,6 @@ public class DiagnosisMessageDto {
     public void setRecommendations(String recommendations) {
         this.recommendations = recommendations;
     }
+
+
 }

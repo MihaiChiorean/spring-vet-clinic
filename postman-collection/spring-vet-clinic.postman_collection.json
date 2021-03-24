@@ -500,7 +500,7 @@
 					"response": []
 				},
 				{
-					"name": "Get  consultation",
+					"name": "Get  consultations",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},

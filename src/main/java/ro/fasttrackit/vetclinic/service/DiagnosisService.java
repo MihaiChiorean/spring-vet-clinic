@@ -29,16 +29,6 @@ public class DiagnosisService {
         this.directExchange = directExchange;
     }
 
-    public DiagnosisDto mapEntityToDiagnosisResponse(DiagnosisEntity entity){
-        DiagnosisDto response = new DiagnosisDto();
-        response.setId(entity.getId());
-        response.setConsultationId(entity.getConsultation().getId());
-        response.setTitle(entity.getTitle());
-        response.setDescription(entity.getDescription());
-        response.setRecommendations(entity.getRecommendations());
-        return response;
-    }
-
     //post
     public DiagnosisDto createNewDiagnosis(DiagnosisDto request){
         DiagnosisEntity newDiagnosis = new DiagnosisEntity();
@@ -64,5 +54,15 @@ public class DiagnosisService {
 //            e.printStackTrace();
         }
         return mapEntityToDiagnosisResponse(saveEntity);
+    }
+
+    public DiagnosisDto mapEntityToDiagnosisResponse(DiagnosisEntity entity){
+        DiagnosisDto response = new DiagnosisDto();
+        response.setId(entity.getId());
+        response.setConsultationId(entity.getConsultation().getId());
+        response.setTitle(entity.getTitle());
+        response.setDescription(entity.getDescription());
+        response.setRecommendations(entity.getRecommendations());
+        return response;
     }
 }

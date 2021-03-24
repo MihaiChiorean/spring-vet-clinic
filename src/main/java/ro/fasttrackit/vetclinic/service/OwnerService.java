@@ -19,6 +19,7 @@ public class OwnerService {
     public OwnerService(OwnerRepository injectedRepository) {
         this.repository = injectedRepository;
     }
+
     public OwnerDto createNewOwner(OwnerDto request) {
         OwnerEntity newOwner = new OwnerEntity();
         newOwner.setId(request.getId());

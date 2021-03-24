@@ -24,7 +24,7 @@ public class ConsultationController {
         return this.service.getById(consultId);
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<ConsultationDto> getAllConsultations() {
         return service.getAll();
     }
@@ -37,7 +37,9 @@ public class ConsultationController {
     @PutMapping
     public ResponseEntity<ConsultationDto> updateConsultation(@RequestBody ConsultationDto updateRequest) {
         if (updateRequest.getId() == null || updateRequest.getId() <= 0) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(updateRequest);
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(updateRequest);
         }
         return ResponseEntity.ok(service.updateConsultation(updateRequest));
     }

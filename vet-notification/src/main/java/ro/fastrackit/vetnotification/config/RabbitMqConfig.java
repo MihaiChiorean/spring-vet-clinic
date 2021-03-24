@@ -20,20 +20,24 @@ public class RabbitMqConfig {
         return new Queue("diagnosis");
     }
 
-
     @Bean
     public DirectExchange directExchange() {
         return new DirectExchange("vet-rabbit");
     }
 
-
     @Bean
     public Binding bindingConsult(DirectExchange directExchange, Queue consultationQueue) {
-        return BindingBuilder.bind(consultationQueue).to(directExchange).with("consultations");
+        return BindingBuilder
+                .bind(consultationQueue)
+                .to(directExchange)
+                .with("consultations");
     }
 
     @Bean
     public Binding bindingDiagnosis(DirectExchange directExchange, Queue diagnosisQueue) {
-        return BindingBuilder.bind(diagnosisQueue).to(directExchange).with("diagnosis");
+        return BindingBuilder
+                .bind(diagnosisQueue)
+                .to(directExchange)
+                .with("diagnosis");
     }
 }

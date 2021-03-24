@@ -1,11 +1,9 @@
 package ro.fasttrackit.vetclinic.model.messaging;
 
 public class ConsultationMessageDto {
-
     private String vetName;
     private String petName;
     private String ownerName;
-
 
     public String getVetName() {
         return vetName;

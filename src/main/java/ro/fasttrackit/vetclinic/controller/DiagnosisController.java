@@ -16,6 +16,7 @@ public class DiagnosisController {
 
     @PostMapping
     public ResponseEntity<DiagnosisDto> createNewDiagnosis(@RequestBody DiagnosisDto petDiagnosisDto){
-        return ResponseEntity.ok(service.createNewDiagnosis(petDiagnosisDto));
+        return ResponseEntity
+                .ok(service.createNewDiagnosis(petDiagnosisDto));
     }
 }
